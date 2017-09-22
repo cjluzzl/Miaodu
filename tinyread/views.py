@@ -115,6 +115,7 @@ class TinyReadCommentView(View):
 
 
 class TinyReadPostComment(View):
+
     def post(self, request, article_id):
         username = request.POST.get("user","")
         user = UserProfile.objects.get(username=username)
