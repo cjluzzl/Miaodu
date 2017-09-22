@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>文章列表</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+
+    <script src="{% static 'js/bootstrap.js' %}" type="text/javascript"></script>
+</head>
+<body>
+
+
+<div class="container">
+    {%  for article in all_article  %}
+        <div style="width: auto;height: auto;border: #b0ff64;">
+    <div class="row">
+        <div class="col-sm-2"  style="width: 120px;background-color: #00a0e9">
+            <img src="{{ MEDIA_URL }}/{{ article.title_image }}" width="100px" height="100px">
+            
+        </div>
+        <div class="col-sm-7"  style="background-color: #a9e25c; font-size: 20pt;height:100px">
+            <a href="{{ article.url }}">
+             <p>{{ article.title_name }}</p>
+            </a>
+            <p style="bottom: auto">{{ article.type.type_name }}</p>
+        </div>
+    </div>
+        </div>
+        <div style="height: 2px">
+
+        </div>
+    {% endfor %}
+
+</div>
+</body>
+</html>
