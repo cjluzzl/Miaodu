@@ -32,7 +32,7 @@ class TinyReadFavAddView(View):
             article = TinyReadArticle.objects.get(pk=article_id)
             article.fav_count = article.fav_count + 1
             article.save()
-            return HttpResponse(u"点赞成功",content_type="text/plain")
+            return HttpResponse(u"点赞成功", content_type="text/plain")
         except:
             print "出现异常"
             return HttpResponse(u"异常操作", content_type="text/plain")
@@ -115,7 +115,6 @@ class TinyReadCommentView(View):
 
 
 class TinyReadPostComment(View):
-
     def post(self, request, article_id):
         username = request.POST.get("user","")
         user = UserProfile.objects.get(username=username)

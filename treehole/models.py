@@ -13,7 +13,7 @@ class TreeHoleArticle(models.Model):
     pub_time = models.DateField(default=datetime.now, verbose_name=u"发布时间")
     fav_count = models.IntegerField(default=0, verbose_name=u"点赞数量")
     comment_count = models.IntegerField(default=0, verbose_name=u"评论数量")
-    address = models.CharField(max_length=100, verbose_name=u"火星球")
+    address = models.CharField(max_length=100, verbose_name=u"地址", default=u"另一个星球")
 
     class Meta:
         verbose_name = u"树洞内容"
