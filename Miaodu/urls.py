@@ -27,7 +27,7 @@ from django.conf.urls.static import static
 from article.views import ArticleListView, ArticleDetailView, ArticleJsonListView
 from tinyread.views import TinyReadJsonListView, TinyReadFavAddView, TinyReadCommentView, PubTinyReadView, TinyReadPostComment
 from treehole.views import TreeHoleJsonListView, TreeHoleCommentView, TreeHoleFavAddView, TreeHolePubView
-
+from users.views import MobileLoginView, MobileRegisterView
 
 urlpatterns = [
     url(r'^xadmin/', xadmin.site.urls),
@@ -49,6 +49,9 @@ urlpatterns = [
     url(r'^treehole/fav_add/(?P<article_id>.*)', TreeHoleFavAddView.as_view(), name="tree_hole_fav_add"),
     url(r'^treehole/comment/(?P<article_id>.*)/(?P<page_id>.*)', TreeHoleCommentView.as_view(),
         name="tree_hole_comment_json"),
-    url(r'treehole/pub/',TreeHolePubView.as_view(), name="tree_hole_pub")
+    url(r'treehole/pub/',TreeHolePubView.as_view(), name="tree_hole_pub"),
+
+    url(r'^users/mobile_login/$', MobileLoginView.as_view(), name="mobile_login"),
+    url(r'^users/mobile_register/$', MobileRegisterView.as_view(), name="mobile_register"),
 
 ]
