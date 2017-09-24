@@ -63,7 +63,7 @@ class TinyReadJsonListView(View):
             dic = {}
             dic["id"] = data.id
             dic["user"] = data.user.nick_name
-            dic["userHeadUrl"] = "http://192.168.155.1:8000/" + "media/"+str(data.user.image)
+            dic["userHeadUrl"] = "http://miaodu.cjluzzl.cn/" + "media/"+str(data.user.image)
             dic["content"] = data.content
             dic["pubTime"] = str(data.pub_time)
             dic["favCount"] = data.fav_count
@@ -72,11 +72,11 @@ class TinyReadJsonListView(View):
             if data.comment_count == 0:
                 dic["commentUrl"] = ""
             else:
-                dic["commentUrl"] = "http://192.168.155.1:8000/tinyread/comment/" + str(data.id) + "/1"
+                dic["commentUrl"] = "http://miaodu.cjluzzl.cn/tinyread/comment/" + str(data.id) + "/1"
             l.append(dic)
         json_data["data"] = l
         if (int(page_id)) * PERPAGER_ARTICLE_COUNT < TinyReadArticle.objects.count():
-            json_data["more"] = "http://192.168.155.1:8000/tinyread/get_json_data/" + str(int(page_id) + 1)
+            json_data["more"] = "http://miaodu.cjluzzl.cn/tinyread/get_json_data/" + str(int(page_id) + 1)
         else:
             json_data["more"] = ""
 
@@ -101,13 +101,13 @@ class TinyReadCommentView(View):
         for comment in comments:
             dic = {}
             dic["user"] = comment.user.nick_name
-            dic["userHeadUrl"] = "http://192.168.155.1:8000/" + "media/"+str(comment.user.image)
+            dic["userHeadUrl"] = "http://miaodu.cjluzzl.cn/" + "media/"+str(comment.user.image)
             dic["pubTime"] = str(comment.pub_time)
             dic["content"] = comment.comment_content
             l.append(dic)
         json_data["data"] = l
         if (int(page_id)) * PERPAGER_ARTICLE_COUNT < TinyReadArticleComment.objects.filter(comment_article__pk = article_id).count():
-            json_data["more"] = "http://192.168.155.1:8000/tinyread/comment/" + article_id +"/"+ str(int(page_id) + 1)
+            json_data["more"] = "http://miaodu.cjluzzl.cn/tinyread/comment/" + article_id +"/"+ str(int(page_id) + 1)
         else:
             json_data["more"] = ""
 

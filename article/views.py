@@ -42,13 +42,13 @@ class ArticleJsonListView(View):
         for article in articles:
             dic = {}
             dic["title"] = article.title_name
-            dic["image"] = "http://192.168.155.1:8000/media/"+str(article.title_image)
+            dic["image"] = "miaodu.cjluzzl.cn/media/"+str(article.title_image)
             dic["type"] = article.type.type_name
             dic["url"] = article.url
             l.append(dic)
         json_data["data"] = l
         if (int(page_id))*PERPAGER_ARTICLE_COUNT < ArticleContent.objects.count():
-            json_data["more"] = "http://192.168.155.1:8000/article/get_json_data/" + str(int(page_id)+1)
+            json_data["more"] = "miaodu.cjluzzl.cn/article/get_json_data/" + str(int(page_id)+1)
         else:
             json_data["more"] = ""
 
